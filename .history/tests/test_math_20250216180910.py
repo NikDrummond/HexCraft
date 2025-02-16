@@ -49,12 +49,4 @@ def test_multiply_float_reject():
     with pytest.raises(AssertionError, match = 'Coordinate scaling factor k must be an integer'):
         hexMath.hex_multiply(h,k)
 
-# test hex_length (axial coordinate distance from origin)
-def test_length():
-    h = Hexagon(jnp.array([2,-2,0]))
-    assert hexMath.hex_length(h) == 2, 'Not calculating distance from origin properly'
-
-def test_dist():
-    h1 = Hexagon(jnp.array([2,-2,0]))
-    h2 = Hexagon(jnp.array([2,0,-2]))
-    assert hexMath.hex_distance(h1,h2) == 2, 'Not calculating distance between two hexagons properly'
+# test hex_length ()

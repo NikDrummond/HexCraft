@@ -52,7 +52,7 @@ def test_multiply_float_reject():
 # test hex_length (axial coordinate distance from origin)
 def test_length():
     h = Hexagon(jnp.array([2,-2,0]))
-    assert hexMath.hex_length(h) == 2, 'Not calculating distance from origin properly'
+    assert hexMath.hex_length() == 2, 'Not calculating distance from origin properly'
 
 def test_dist():
     h1 = Hexagon(jnp.array([2,-2,0]))

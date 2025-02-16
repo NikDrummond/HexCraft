@@ -1,5 +1,5 @@
 import jax.numpy as jnp
-from typing import List
+from typing import Lost
 
 def _coordinate_int_conversion(arr: jnp.ndarray) -> jnp.ndarray:
 
@@ -46,7 +46,7 @@ class Hexagons:
         return Hexagon(self.coordinates[i])
     
     def hexagons_list(self) -> List:
-        return [Hexagon(c) for c in self.coordinates]
+        return [Hexagon[i] for i in self.coordinates]
     
     def all_q(self) -> jnp.ndarray:
         return self.coordinates[:,0]
