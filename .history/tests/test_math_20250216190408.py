@@ -39,7 +39,7 @@ def test_multiply():
     k = 3
     h = Hexagon(c)
     expected = c * k
-    result = hexMath.hex_multiply(h,k).coordinates
+    result = hexMath.hex_multiply(h,k).coordinate
     assert jnp.array_equal(result,expected), 'Not multiplying Hexagon coordinates correctly'
 
 # assert k is int in multiply test

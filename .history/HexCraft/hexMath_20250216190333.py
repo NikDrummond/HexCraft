@@ -16,7 +16,7 @@ def hex_multiply(a: Hexagon, k: int) -> Hexagon:
     return Hexagon(a.coordinates * k)
 
 def hex_length(a:Hexagon) -> int:
-    return int(abs(a.coordinates).sum()/2)
+    return int(abs(a.coordinate).sum()/2)
 
 def hex_distance(a:Hexagon, b:Hexagon) -> int:
     return hex_length(hex_subtract(a,b))
@@ -40,5 +40,5 @@ def hex_neighbour(a:Hexagon, direction: int | None = None) -> Hexagon | List:
         b = _get_direction_hex(direction,directions)
         return hex_add(a,b)
     else:
-        neighbours = a.coordinates + directions
+        neighbours = a.coordinate + directions
         return Hexagons(neighbours)

@@ -28,10 +28,10 @@ class Hexagon:
         return self.coordinates[0]
     
     def r(self):
-        return self.coordinates[1]
+        return self.coordinate[1]
     
     def s(self):
-        return self.coordinates[2]
+        return self.coordinate[2]
     
 class Hexagons:
 

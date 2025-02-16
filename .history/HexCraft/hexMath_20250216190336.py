@@ -40,5 +40,5 @@ def hex_neighbour(a:Hexagon, direction: int | None = None) -> Hexagon | List:
         b = _get_direction_hex(direction,directions)
         return hex_add(a,b)
     else:
-        neighbours = a.coordinates + directions
+        neighbours = a.coordinate + directions
         return Hexagons(neighbours)

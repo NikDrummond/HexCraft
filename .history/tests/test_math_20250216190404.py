@@ -30,7 +30,7 @@ def test_subtract():
     h1 = Hexagon(c1)
     h2 = Hexagon(c2)
     expected = c1 - c2
-    result = hexMath.hex_subtract(h1,h2).coordinates
+    result = hexMath.hex_subtract(h1,h2).coordinate
     assert jnp.array_equal(result,expected), 'Not subtracting Hexagon coordinates correctly'
 
 # multiply test
@@ -39,7 +39,7 @@ def test_multiply():
     k = 3
     h = Hexagon(c)
     expected = c * k
-    result = hexMath.hex_multiply(h,k).coordinates
+    result = hexMath.hex_multiply(h,k).coordinate
     assert jnp.array_equal(result,expected), 'Not multiplying Hexagon coordinates correctly'
 
 # assert k is int in multiply test
