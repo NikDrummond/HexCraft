@@ -34,17 +34,13 @@ def test_subtract():
     assert jnp.array_equal(result,expected), 'Not subtracting Hexagon coordinates correctly'
 
 # multiply test
-def test_multiply():
-    c = jnp.array([0,1,-1])
-    k = 3
-    h = Hexagon(c)
-    expected = c * k
-    result = hexMath.hex_multiply(h,k).coordinate
-    assert jnp.array_equal(result,expected), 'Not multiplying Hexagon coordinates correctly'
+def test_subtract():
+    c1 = jnp.array([0,1,-1])
+    c2 = jnp.array([1,0,-1])
+    h1 = Hexagon(c1)
+    h2 = Hexagon(c2)
+    expected = c1 - c2
+    result = hexMath.hex_subtract(h1,h2).coordinate
+    assert jnp.array_equal(result,expected), 'Not subtracting Hexagon coordinates correctly'
 
 # assert k is int in multiply test
-def test_multiply_float_reject():
-    h = Hexagon(jnp.array([0,1,-1]))
-    k = 3.5
-    with pytest.raises(AssertionError, match = 'Coordinate scaling factor k must be an integer'):
-        hexMath.hex_multiply(h,k)

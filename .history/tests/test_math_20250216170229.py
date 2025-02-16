@@ -44,7 +44,9 @@ def test_multiply():
 
 # assert k is int in multiply test
 def test_multiply_float_reject():
-    h = Hexagon(jnp.array([0,1,-1]))
+    h = Hexagon(jnp.array([0,1,-1])
     k = 3.5
+
     with pytest.raises(AssertionError, match = 'Coordinate scaling factor k must be an integer'):
-        hexMath.hex_multiply(h,k)
+        core._coordinate_int_conversion(input_array)
+    h = Hexagon(c)

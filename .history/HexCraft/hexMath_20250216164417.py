@@ -1,5 +1,5 @@
 from .core import Hexagon
-import jax.numpy as jnp
+import jax.numpy as jn[]
 
 def hex_equal(a: Hexagon, b: Hexagon) -> bool:
     return bool(jnp.array_equal(a.coordinate,b.coordinate))
