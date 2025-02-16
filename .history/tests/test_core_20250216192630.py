@@ -51,71 +51,49 @@ def test_int_conversion_TypeError_jax():
 def test_int_return_2d():
     input_array = jnp.array([[1,2,-3],[1,2,-3]])
     result = core._coordinate_int_conversion(input_array)
-    assert jnp.array_equal(input_array, result), '2D integer input not preserved'
+    assert jnp.array_equal(input_array, result), 'Jax integer input not preserved'
 
 # test returns integers if floats that can be converted are given - jax
 def test_int_conversion_2d():
     expected = jnp.array([[1.0,2.0,-3.0],[1.0,2.0,-3.0]])
-    input_array = jnp.array([[1,2,-3],[1,2,-3]])
+    input_array = jnp.array([1,2,-3])
     result = core._coordinate_int_conversion(input_array)
-    assert jnp.array_equal(expected, result), '2D float input not properly converted'
+    assert jnp.array_equal(expected, result), 'Jax float input not properly converted'
 
 # test raises error if cannot be converted to floats - jax
 def test_int_conversion_TypeError_2d():
-    input_array = jnp.array([[1.0,2.5,3.2],[1.0,2.5,3.2]])
+    input_array = jnp.array([1.0,2.5,3.2])
     with pytest.raises(TypeError, match = 'Input coordinates must be integer values'):
         core._coordinate_int_conversion(input_array)
+
 
 ### Hexagon tests
 
 # Given an integer coordinate array, make sure the coordinates of output are the same
-def test_Hexagon_keeps_coords():
+def test_class_keeps_coords():
     input_array = jnp.array([0,1,-1])
     result = core.Hexagon(input_array).coordinates
     assert jnp.array_equal(input_array, result)
 
-def test_Hexagon_qrs():
+def test_class_qrs():
     input_array = jnp.array([0,1,-1])
     Hex = core.Hexagon(input_array)
 
-    assert Hex.q() == input_array[0], 'q not returned properly'
-    assert Hex.r() == input_array[1], 'r not returned properly'
-    assert Hex.s() == input_array[2], 's not returned properly'
+    assert Hex.q() == input_array[0], 'q note returned properly'
+    assert Hex.r() == input_array[1], 'r note returned properly'
+    assert Hex.s() == input_array[2], 's note returned properly'
 
 # make sure we raise the proper error when more than 3 values are given
-def test_Hexagon_coord_len_error():
+def test_coord_len_error():
     input_array = jnp.array([0,1,3,-4])
     with pytest.raises(AssertionError, match = "Input coordinate must be 3D for q, r, and s."):
         core.Hexagon(input_array)
 
 # make sure we raise the proper error when sum of input is not 0
-def test_Hexagon_coord_sum_error():
+def test_coord_sum_error():
     input_array = jnp.array([0,1,-3])
     with pytest.raises(AssertionError, match = re.escape("q + r + s must be 0")):
         core.Hexagon(input_array)
 
-### Hexagons tests
-
-# Given an integer coordinate array, make sure the coordinates of output are the same
-def test_Hexagons_keeps_coords():
-    input_array = jnp.array([[0,1,-1],[1,0,-1]])
-    result = core.Hexagons(input_array).coordinates
-    assert jnp.array_equal(input_array, result)
-
-# test retrieving q/r/s integer arrays
-def test_Hexagons_qrs():
-    input_array = jnp.array([[0,1,-1],[1,0,-1]])
-    Hex = core.Hexagons(input_array)
-
-    assert jnp.array_equal(input_array[:,0],Hex.all_q()), 'q not returned properly'
-    assert jnp.array_equal(input_array[:,1],Hex.all_r()), 'r not returned properly'
-    assert jnp.array_equal(input_array[:,2],Hex.all_s()), 's not returned properly'
-
-# test retrieving a single hexagon by index
-def test_get_Hexagon():
-    input_array = jnp.array([[0,1,-1],[1,0,-1]])
-    Hexs = core.Hexagons(input_array)
-    Hex = core.Hexagon(input_array[0])
-    test_hex = Hexs.get_hexagon(0)
-    assert jnp.array_equal(Hex.coordinates,test_hex.coordinates), 'Not returning single Hexagon from Hexagons properly'
+### hexagons tests
 

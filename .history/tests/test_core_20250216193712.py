@@ -118,4 +118,3 @@ def test_get_Hexagon():
     Hex = core.Hexagon(input_array[0])
     test_hex = Hexs.get_hexagon(0)
     assert jnp.array_equal(Hex.coordinates,test_hex.coordinates), 'Not returning single Hexagon from Hexagons properly'
-

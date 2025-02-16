@@ -35,7 +35,7 @@ def hex_length(a:Hexagon) -> int | jnp.ndarray:
     if isinstance(a, Hexagon):
         return int(abs(a.coordinates).sum()/2)
     elif isinstance(a, Hexagons):
-        lens = abs(a.coordinates).sum(axis = -1)/2
+        lens = abs(a_neigh.coordinates).sum(axis = -1)/2
         return lens.astype(int)
     
 

@@ -78,9 +78,9 @@ def test_Hexagon_qrs():
     input_array = jnp.array([0,1,-1])
     Hex = core.Hexagon(input_array)
 
-    assert Hex.q() == input_array[0], 'q not returned properly'
-    assert Hex.r() == input_array[1], 'r not returned properly'
-    assert Hex.s() == input_array[2], 's not returned properly'
+    assert Hex.q() == input_array[0], 'q note returned properly'
+    assert Hex.r() == input_array[1], 'r note returned properly'
+    assert Hex.s() == input_array[2], 's note returned properly'
 
 # make sure we raise the proper error when more than 3 values are given
 def test_Hexagon_coord_len_error():
@@ -102,20 +102,10 @@ def test_Hexagons_keeps_coords():
     result = core.Hexagons(input_array).coordinates
     assert jnp.array_equal(input_array, result)
 
-# test retrieving q/r/s integer arrays
 def test_Hexagons_qrs():
-    input_array = jnp.array([[0,1,-1],[1,0,-1]])
-    Hex = core.Hexagons(input_array)
+    input_array = jnp.array([0,1,-1])
+    Hex = core.Hexagon(input_array)
 
-    assert jnp.array_equal(input_array[:,0],Hex.all_q()), 'q not returned properly'
-    assert jnp.array_equal(input_array[:,1],Hex.all_r()), 'r not returned properly'
-    assert jnp.array_equal(input_array[:,2],Hex.all_s()), 's not returned properly'
-
-# test retrieving a single hexagon by index
-def test_get_Hexagon():
-    input_array = jnp.array([[0,1,-1],[1,0,-1]])
-    Hexs = core.Hexagons(input_array)
-    Hex = core.Hexagon(input_array[0])
-    test_hex = Hexs.get_hexagon(0)
-    assert jnp.array_equal(Hex.coordinates,test_hex.coordinates), 'Not returning single Hexagon from Hexagons properly'
-
+    assert Hex.q() == input_array[0], 'q note returned properly'
+    assert Hex.r() == input_array[1], 'r note returned properly'
+    assert Hex.s() == input_array[2], 's note returned properly'

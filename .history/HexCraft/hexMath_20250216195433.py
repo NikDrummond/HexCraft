@@ -5,7 +5,7 @@ from typing import List
 def hex_equal(a: Hexagon, b: Hexagon) -> bool:
     return bool(jnp.array_equal(a.coordinates,b.coordinates))
 
-def hex_add(a: Hexagon, b: Hexagon) -> Hexagon | Hexagons:
+def hex_add(a: Hexagon, b: Hexagon) -> Hexagon:
 
     arr = a.coordinates + b.coordinates
     if arr.ndim == 1:
@@ -13,29 +13,21 @@ def hex_add(a: Hexagon, b: Hexagon) -> Hexagon | Hexagons:
     elif arr.ndim == 2:
         return Hexagons(arr)
 
-def hex_subtract(a: Hexagon, b: Hexagon) -> Hexagon | Hexagons:
+def hex_subtract(a: Hexagon, b: Hexagon) -> Hexagon:
 
-    arr = a.coordinates - b.coordinates
-    if arr.ndim == 1:
-        return Hexagon(arr)
-    elif arr.ndim == 2:
-        return Hexagons(arr)
+    arr = a.coordinates + b.coordinates
+    return Hexagon(a.coordinates - b.coordinates)
 
-def hex_multiply(a: Hexagon, k: int) -> Hexagon | Hexagons:
+def hex_multiply(a: Hexagon, k: int) -> Hexagon:
     assert isinstance(k, int), 'Coordinate scaling factor k must be an integer'
-    
-    arr = a.coordinates * k
-    if arr.ndim == 1:
-        return Hexagon(arr)
-    elif arr.ndim == 2:
-        return Hexagons(arr)
+    return Hexagon(a.coordinates * k)
 
 def hex_length(a:Hexagon) -> int | jnp.ndarray:
 
     if isinstance(a, Hexagon):
         return int(abs(a.coordinates).sum()/2)
     elif isinstance(a, Hexagons):
-        lens = abs(a.coordinates).sum(axis = -1)/2
+        lens = abs(a_neigh.coordinates).sum(axis = -1)/2
         return lens.astype(int)
     
 
