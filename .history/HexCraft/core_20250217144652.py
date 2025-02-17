@@ -45,7 +45,7 @@ class Hexagons:
         assert coordinates.sum() == 0, "q + r + s must be 0 for all coordinates"
         self.coordinates = coordinates
 
-    def add_hexagon(self, Hex: Hexagon):
+    def add_hexagon(self, Hex: Hexagon) -> Hexagons:
 
         # Append using vstack (JAX-compatible, functional update)
         new_coordinates = jnp.vstack([self.coordinates, Hex.coordinates])

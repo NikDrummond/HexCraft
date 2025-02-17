@@ -5,6 +5,11 @@ from GeoJax import center_points as cp
 from GeoJax.core import _mat_mul
 
 @jit
+def _mat_mul(a: jnp.ndarray, b: jnp.ndarray) -> jnp.ndarray:
+    return a @ b
+
+
+@jit
 def _point_flat_top(a: jnp.ndarray, s: float = 1.0) -> jnp.ndarray:
     _flat_top = jnp.array([[3 / 2, 0], [jnp.sqrt(3) / 2, jnp.sqrt(3)]])
     return _mat_mul(a, _flat_top) * s

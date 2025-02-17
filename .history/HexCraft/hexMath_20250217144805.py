@@ -62,8 +62,7 @@ def hex_neighbour(a:Hexagon, direction: int | None = None, keep_a: bool = True) 
         return hex_add(a,b)
     else:
         neighbours = a.coordinates + directions
-        if keep_a:
-            neighbours = jnp.vstack([a.coordinates, neighbours])
+        if keep_a
         return Hexagons(neighbours)
     
 def hex_diagonal_neighbour(a:Hexagon, direction: int | None = None) -> Hexagon | Hexagons:
