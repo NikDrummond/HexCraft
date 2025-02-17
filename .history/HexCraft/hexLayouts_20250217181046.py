@@ -35,22 +35,14 @@ def hex_2D_conversion(
     valid_methods = ["flat_top", "point_top"]
     axial_hex_coords = a.axial_coords()
 
-    if isinstance(a,Hexagon):
-        if method == "flat_top":
-            arr = _point_flat_top(axial_hex_coords, s=s)
-        elif method == "point_top":
-            arr = _point_pointy_top(axial_hex_coords, s=s)
-        else:
-            raise ValueError(f"Invalid method '{method}'. Expected one of {valid_methods}.")
-        
-    if isinstance(a,Hexagons):
-        if method == "flat_top":
-            arr = _points_flat_top(axial_hex_coords, s=s).T
-        elif method == "point_top":
-            arr = _points_pointy_top(axial_hex_coords, s=s).T
-        else:
-            raise ValueError(f"Invalid method '{method}'. Expected one of {valid_methods}.")
-        
+    if isinstance(a,)
+    if method == "flat_top":
+        arr = _point_flat_top(axial_hex_coords, s=s)
+    elif method == "point_top":
+        arr = _point_pointy_top(axial_hex_coords, s=s)
+    else:
+        raise ValueError(f"Invalid method '{method}'. Expected one of {valid_methods}.")
+    
     if center:
         if jnp.array_equal(center_point, jnp.array([0,0])):
             arr = cp(arr)
