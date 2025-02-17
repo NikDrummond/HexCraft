@@ -39,15 +39,15 @@ def hex_2D_conversion(
         if method == "flat_top":
             arr = _point_flat_top(axial_hex_coords, s=s)
         elif method == "flat_side":
-            arr = _point_flat_side(axial_hex_coords, s=s)
+            arr = _point_pointy_top(axial_hex_coords, s=s)
         else:
             raise ValueError(f"Invalid method '{method}'. Expected one of {valid_methods}.")
         
     if isinstance(a,Hexagons):
         if method == "flat_top":
             arr = _points_flat_top(axial_hex_coords, s=s).T
-        elif method == "flat_side":
-            arr = _points_flat_side(axial_hex_coords, s=s).T
+        elif method == "point_top":
+            arr = _points_pointy_top(axial_hex_coords, s=s).T
         else:
             raise ValueError(f"Invalid method '{method}'. Expected one of {valid_methods}.")
         
