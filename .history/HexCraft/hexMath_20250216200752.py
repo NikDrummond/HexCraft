@@ -45,7 +45,7 @@ def hex_distance(a:Hexagon, b:Hexagon) -> int:
 def _get_direction_hex(direction:int, directions: jnp.ndarray) -> Hexagon:
     return Hexagon(directions[direction])
 
-def hex_neighbour(a:Hexagon, direction: int | None = None) -> Hexagon | Hexagons:
+def hex_neighbour(a:Hexagon, direction: int | None = None) -> Hexagon | List:
     
     # specify directions - order (top, right top, right bottom, bottom, left bottom, left top)
     directions = jnp.array([
@@ -64,21 +64,3 @@ def hex_neighbour(a:Hexagon, direction: int | None = None) -> Hexagon | Hexagons
         neighbours = a.coordinates + directions
         return Hexagons(neighbours)
     
-def hex_diagonal_neighbour(a:Hexagon, direction: int | None = None) -> Hexagon | Hexagons:
-    
-    # specify directions - order (right top, right, right bottom, left bottom, left, left top)
-    directions = jnp.array([
-        [1, -2, 1], 
-        [2, -1, -1], 
-        [1, 1, -2], 
-        [-1, 2, -1], 
-        [-2, 1, 1], 
-        [-1, -1, 2]
-    ], dtype = int)
-
-    if direction != None:
-        b = _get_direction_hex(direction,directions)
-        return hex_add(a,b)
-    else:
-        neighbours = a.coordinates + directions
-        return Hexagons(neighbours)

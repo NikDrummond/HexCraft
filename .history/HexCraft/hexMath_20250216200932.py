@@ -72,8 +72,8 @@ def hex_diagonal_neighbour(a:Hexagon, direction: int | None = None) -> Hexagon |
         [2, -1, -1], 
         [1, 1, -2], 
         [-1, 2, -1], 
-        [-2, 1, 1], 
-        [-1, -1, 2]
+        [-1, 1, 0], 
+        [-1, 0, 1]
     ], dtype = int)
 
     if direction != None:

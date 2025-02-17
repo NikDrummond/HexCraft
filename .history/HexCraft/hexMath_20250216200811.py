@@ -66,14 +66,14 @@ def hex_neighbour(a:Hexagon, direction: int | None = None) -> Hexagon | Hexagons
     
 def hex_diagonal_neighbour(a:Hexagon, direction: int | None = None) -> Hexagon | Hexagons:
     
-    # specify directions - order (right top, right, right bottom, left bottom, left, left top)
+    # specify directions - order (top, right top, right bottom, bottom, left bottom, left top)
     directions = jnp.array([
-        [1, -2, 1], 
-        [2, -1, -1], 
-        [1, 1, -2], 
-        [-1, 2, -1], 
-        [-2, 1, 1], 
-        [-1, -1, 2]
+        [0, -1, 1], 
+        [1, -1, 0], 
+        [1, 0, -1], 
+        [0, 1, -1], 
+        [-1, 1, 0], 
+        [-1, 0, 1]
     ], dtype = int)
 
     if direction != None:

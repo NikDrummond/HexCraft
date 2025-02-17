@@ -33,8 +33,6 @@ class Hexagon:
     def s(self):
         return self.coordinates[2]
     
-    def axial_coords(self) -> jnp.ndarray:
-        return self.coordinates[0:2]
     
 class Hexagons:
 

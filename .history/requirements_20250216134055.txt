@@ -2,4 +2,3 @@ setuptools
 jax
 numpy
 math
-GeoJax
