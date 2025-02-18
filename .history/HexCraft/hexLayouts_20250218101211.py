@@ -6,30 +6,31 @@ from GeoJax.core import _mat_mul
 
 @jit
 def _points_flat_top(a: jnp.ndarray, size: float = 1.0) -> jnp.ndarray:
-    _flat_top = jnp.array([[3 / 2, 0], [-jnp.sqrt(3) / 2, -jnp.sqrt(3)]])
+    _flat_top = jnp.array([[3 / 2, 0], [jnp.sqrt(3) / 2, jnp.sqrt(3)]])
     return size * _mat_mul(_flat_top, a.T)
 
 @jit
 def _point_flat_top(a: jnp.ndarray, size: float = 1.0) -> jnp.ndarray:
-    _flat_top = jnp.array([[3 / 2, 0], [-jnp.sqrt(3) / 2, -jnp.sqrt(3)]])
+    _flat_top = jnp.array([[3 / 2, 0], [jnp.sqrt(3) / 2, jnp.sqrt(3)]])
     return size * _mat_mul(_flat_top, a)
 
 @jit
 def _points_flat_side(a: jnp.ndarray, size: float = 1.0) -> jnp.ndarray:
-    _pointy_top = jnp.array([[jnp.sqrt(3), jnp.sqrt(3) / 2], [-0, -3 / 2]])
-    return size * _mat_mul(_pointy_top, a.T)
+    _pointy_top = jnp.array([[jnp.sqrt(3), jnp.sqrt(3) / 2], [0, 3 / 2]])
+    return s * _mat_mul(_pointy_top, a.T)
 
 @jit
 def _point_flat_side(a:jnp.ndarray, size:float = 1.0) -> jnp.ndarray:
-    _pointy_top = jnp.array([[jnp.sqrt(3), jnp.sqrt(3) / 2], [-0, -3 / 2]])
-    return size * _mat_mul(_pointy_top, a)
+    _pointy_top = jnp.array([[jnp.sqrt(3), jnp.sqrt(3) / 2], [0, 3 / 2]])
+    return s * _mat_mul(_pointy_top, a)
 
 def hex_2D_conversion(
     a: Hexagon | Hexagons,
     center: bool = True,
     center_point: jnp.ndarray = jnp.array([0.0, 0.0]),
     method: str = "flat_top",
-    size: float = 1.0
+    size: float = 1.0,
+    scale: float = 1.0
 ) -> jnp.ndarray:
 
     valid_methods = ["flat_top", "flat_side"]

@@ -53,7 +53,7 @@ def hex_Patches(
     return mc.PolyCollection(hexagons, **kwargs)
 
 
-def get_ax_limits(hexs: Hexagons, size: float = 1.0, padding: float = 1.0, method: str = 'flat_side') -> jnp.ndarray:
+def get_ax_limits(hexs: Hexagons, size: float = 1.0,  padding: float = 1.0, method: str = 'flat_side') -> jnp.ndarray:
     coords = hex_2D_conversion(hexs, size=size, method=method)
     arr = jnp.array(
         [

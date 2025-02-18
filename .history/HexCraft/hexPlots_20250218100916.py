@@ -44,7 +44,7 @@ def _point_top_verts(center: jnp.ndarray, size: float, scale: float) -> jnp.ndar
 def hex_Patches(
     hexs: Hexagons, size: float = 1.0, scale: float = 1.0, method: str = "flat_side", **kwargs
 ) -> mc.PolyCollection:
-    coords = hex_2D_conversion(hexs, size=size, method=method)
+    coords = hex_2D_conversion(hexs, size=size, scale = scale, method=method)
     if method == 'flat_top':
         hexagons = vmap(_flat_top_verts, in_axes=(0, None, None))(coords, size, scale)
     elif method == 'flat_side':
@@ -53,8 +53,8 @@ def hex_Patches(
     return mc.PolyCollection(hexagons, **kwargs)
 
 
-def get_ax_limits(hexs: Hexagons, size: float = 1.0, padding: float = 1.0, method: str = 'flat_side') -> jnp.ndarray:
-    coords = hex_2D_conversion(hexs, size=size, method=method)
+def get_ax_limits(hexs: Hexagons, size: float = 1.0, scale: float = 1.0, padding: float = 1.0, method: str = 'flat_side') -> jnp.ndarray:
+    coords = hex_2D_conversion(hexs, size=size, scale = scale, method=method)
     arr = jnp.array(
         [
             [coords[:, 0].min() - padding, coords[:, 0].max() + padding],

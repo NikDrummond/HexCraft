@@ -16,12 +16,12 @@ def _point_flat_top(a: jnp.ndarray, size: float = 1.0) -> jnp.ndarray:
 
 @jit
 def _points_flat_side(a: jnp.ndarray, size: float = 1.0) -> jnp.ndarray:
-    _pointy_top = jnp.array([[jnp.sqrt(3), jnp.sqrt(3) / 2], [-0, -3 / 2]])
+    _pointy_top = jnp.array([[jnp.sqrt(3), jnp.sqrt(3) / 2], [0, -3 / 2]])
     return size * _mat_mul(_pointy_top, a.T)
 
 @jit
 def _point_flat_side(a:jnp.ndarray, size:float = 1.0) -> jnp.ndarray:
-    _pointy_top = jnp.array([[jnp.sqrt(3), jnp.sqrt(3) / 2], [-0, -3 / 2]])
+    _pointy_top = jnp.array([[jnp.sqrt(3), jnp.sqrt(3) / 2], [0, -3 / 2]])
     return size * _mat_mul(_pointy_top, a)
 
 def hex_2D_conversion(
