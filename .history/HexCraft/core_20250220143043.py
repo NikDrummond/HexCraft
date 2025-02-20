@@ -70,5 +70,4 @@ class Hexagons:
     def axial_coords(self) -> jnp.ndarray:
         return self.coordinates[:,0:2]
     
-    def num_hexagons(self) -> int:
-        return self.coordinates.shape[0]
+    def num_
