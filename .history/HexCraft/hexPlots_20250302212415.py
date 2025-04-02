@@ -19,24 +19,15 @@ from .hexLayouts import hex_2D_conversion
 #     # In this case
 #     return jnp.column_stack((x, y))
 
-# @jit
-# def _flat_top_verts(center: jnp.ndarray, size: float, scale: float) -> jnp.ndarray:
-    
-#     angles = jnp.deg2rad(jnp.array([0, 60, 120, 180, 240, 300]))
-#     # Compute unit offsets (for size=1)
-#     offsets = jnp.column_stack((jnp.cos(angles), jnp.sin(angles)))
-#     # Multiply the unit offsets by the size to get the unscaled offsets,
-#     # then scale them further by 'scale'
-#     return center + scale * (size * offsets)
-
 @jit
 def _flat_top_verts(center: jnp.ndarray, size: float, scale: float) -> jnp.ndarray:
-
+    
     angles = jnp.deg2rad(jnp.array([0, 60, 120, 180, 240, 300]))
-    s = size * scale
-    x = center[0] + s * jnp.cos(angles)
-    y = center[1] + s * jnp.sin(angles)
-    return jnp.column_stack((x, y))
+    # Compute unit offsets (for size=1)
+    offsets = jnp.column_stack((jnp.cos(angles), jnp.sin(angles)))
+    # Multiply the unit offsets by the size to get the unscaled offsets,
+    # then scale them further by 'scale'
+    return center + scale * (size * offsets)
 
 
 

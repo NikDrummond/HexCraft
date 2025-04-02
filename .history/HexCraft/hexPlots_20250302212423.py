@@ -30,9 +30,9 @@ from .hexLayouts import hex_2D_conversion
 #     return center + scale * (size * offsets)
 
 @jit
-def _flat_top_verts(center: jnp.ndarray, size: float, scale: float) -> jnp.ndarray:
+def _point_top_verts(center: jnp.ndarray, size: float, scale: float) -> jnp.ndarray:
 
-    angles = jnp.deg2rad(jnp.array([0, 60, 120, 180, 240, 300]))
+    angles = jnp.deg2rad(jnp.array([30, 90, 150, 210, 270, 330]))
     s = size * scale
     x = center[0] + s * jnp.cos(angles)
     y = center[1] + s * jnp.sin(angles)
