@@ -1,6 +1,5 @@
 from jax import jit
 import jax.numpy as jnp
-# import numpy as np
 from .core import Hexagon,Hexagons
 # from GeoJax import center_points as cp
 # from GeoJax.core import _mat_mul
@@ -8,22 +7,22 @@ from .core import Hexagon,Hexagons
 @jit
 def _points_flat_top(a: jnp.ndarray, size: float = 1.0) -> jnp.ndarray:
     _flat_top = jnp.array([[3 / 2, 0], [-jnp.sqrt(3) / 2, -jnp.sqrt(3)]])
-    return size * (_flat_top @ a.T)
+    return size * _mat_mul(_flat_top, a.T)
 
 @jit
 def _point_flat_top(a: jnp.ndarray, size: float = 1.0) -> jnp.ndarray:
     _flat_top = jnp.array([[3 / 2, 0], [-jnp.sqrt(3) / 2, -jnp.sqrt(3)]])
-    return size * (_flat_top @ a)
+    return size * _mat_mul(_flat_top, a)
 
 @jit
 def _points_flat_side(a: jnp.ndarray, size: float = 1.0) -> jnp.ndarray:
     _pointy_top = jnp.array([[jnp.sqrt(3), jnp.sqrt(3) / 2], [-0, -3 / 2]])
-    return size * (_pointy_top @ a.T)
+    return size * _mat_mul(_pointy_top, a.T)
 
 @jit
 def _point_flat_side(a:jnp.ndarray, size:float = 1.0) -> jnp.ndarray:
     _pointy_top = jnp.array([[jnp.sqrt(3), jnp.sqrt(3) / 2], [-0, -3 / 2]])
-    return size * (_pointy_top @ a)
+    return size * _mat_mul(_pointy_top, a)
 
 def hex_2D_conversion(
     a: Hexagon | Hexagons,
@@ -54,8 +53,8 @@ def hex_2D_conversion(
         
     if center:
         if jnp.array_equal(center_point, jnp.array([0,0])):
-            arr = arr - arr.mean(axis = 0)
+            arr = cp(arr)
         else:
-            arr = arr - center_point
+            arr = cp(arr, center_point)
 
     return arr

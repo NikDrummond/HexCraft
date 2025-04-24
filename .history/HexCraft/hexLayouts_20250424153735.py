@@ -54,7 +54,7 @@ def hex_2D_conversion(
         
     if center:
         if jnp.array_equal(center_point, jnp.array([0,0])):
-            arr = arr - arr.mean(axis = 0)
+            arr = arr - cent_coords.mean(axis = 0)
         else:
             arr = arr - center_point
 

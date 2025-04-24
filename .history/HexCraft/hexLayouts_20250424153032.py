@@ -1,6 +1,5 @@
 from jax import jit
 import jax.numpy as jnp
-# import numpy as np
 from .core import Hexagon,Hexagons
 # from GeoJax import center_points as cp
 # from GeoJax.core import _mat_mul
@@ -54,8 +53,8 @@ def hex_2D_conversion(
         
     if center:
         if jnp.array_equal(center_point, jnp.array([0,0])):
-            arr = arr - arr.mean(axis = 0)
+            arr = arr - arr.mean(axes = 1)
         else:
-            arr = arr - center_point
+            arr = arr, center_point)
 
     return arr
