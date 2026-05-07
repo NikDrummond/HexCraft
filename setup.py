@@ -23,8 +23,7 @@ setup(name='HexCraft',
 	license='MIT',
 	packages=find_packages(),
 	install_requires=[
-		"jax",
-		"jaxlib"
+		"numpy"
 	],
 	extras_require={
         "dev": ["pytest", "sphinx", "sphinx-rtd-theme"],
